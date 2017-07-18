@@ -215,6 +215,6 @@ function convert2multisig(key4conv) {
 			alert(err);
 	});
 
-	//'http://192.3.61.243''
+	 
 	
 };
