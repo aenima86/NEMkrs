@@ -161,9 +161,6 @@ function convert2multisig(key4conv) {
 	// Set message
 	transferTransaction.message = '';
 
-	// Prepare the updated transfer transaction object
-	var transactionEntity = nem.model.transactions.prepare("transferTransaction")(common, transferTransaction, nem.model.network.data.testnet.id);
-
 	var keyPair = nem.crypto.keyPair.create(key4conv);
 	var publicKey = keyPair.publicKey.toString();
 
@@ -195,22 +192,18 @@ function convert2multisig(key4conv) {
 	$('#wh').text(encodeURI(uri.replace("multisig.htm", "index.htm")));
 
 
+	// Prepare the updated transfer transaction object
+	var transactionEntity = nem.model.transactions.prepare("transferTransaction")(common, transferTransaction, nem.model.network.data.testnet.id);
 
 	strConver = '{ "timeStamp": 9111526, "fee": 500000, "type": 4097, "deadline": 9154726, "version": -1744830462, "signer": "'+publicKey+'", "modifications": [ { "modificationType": 1, "cosignatoryAccount": "'+publicKey1+'" },{ "modificationType": 1, "cosignatoryAccount": "'+publicKey2+'" },{ "modificationType": 1, "cosignatoryAccount": "'+publicKey3+'" } ], "minCosignatories" : { "relativeChange": 2 } }';
 	var obj1 = JSON.parse(strConver);
 
-	obj1.timeStamp = transactionEntity.timeStamp
-	obj1.deadline = transactionEntity.deadline
+	obj1.timeStamp = transactionEntity.timeStamp;
+	obj1.deadline = transactionEntity.deadline;
 
-
-	console.log("TEST:");
-	console.log(obj1);
-	console.log(strConver);
-	console.log(common);
+	
 
 	// Serialize transfer transaction and announce
-	
-	
 	nem.model.transactions.send(common, obj1, endpoint).then(function(res){
 		// If code >= 2, it's an error
 		if (res.code >= 2) {
@@ -221,5 +214,7 @@ function convert2multisig(key4conv) {
 		}, function(err) {
 			alert(err);
 	});
+
+	//'http://192.3.61.243''
 	
 };
