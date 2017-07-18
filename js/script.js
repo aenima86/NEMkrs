@@ -1,5 +1,4 @@
 
-
 // Load nem-browser library
 var nem = require("nem-sdk").default;
 
@@ -13,12 +12,6 @@ $('#rndseed').text(randomSeed);
 
 //check if we are in recovery mode
 urlCheck();
-
-
-
-//var privateKey = nem.crypto.helpers.derivePassSha(passphrase, 6000).priv;
-
-
 
 
 
@@ -75,7 +68,7 @@ $("#nextbtnSec3").click(function(){
 	var pKey = makePrivateKey(passphrase);
 	$('#pk').text(pKey);
 
-	var pathname = window.location.pathname;
+	var pathname = window.location.href;
 	var uri = pathname + '?seed=' + $('#rndseed').text() + '&Q1=' + $('#question1').find(":selected").text() + '&Q2=' + $('#question2').find(":selected").text() + '&Q3=' + $('#question3').find(":selected").text()+ '&Q4=Your e-mail address?';
 	$('#wh').text(encodeURI(uri));
 

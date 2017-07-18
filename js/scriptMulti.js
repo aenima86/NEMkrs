@@ -190,7 +190,7 @@ function convert2multisig(key4conv) {
 	$('#pk2').text(privateKey2);
 
 
-	var pathname = window.location.pathname;
+	var pathname = window.location.href;
 	var uri = pathname + '?seed=' + $('#rndseed').text() + '&Q1=' + $('#question1').find(":selected").text() + '&Q2=' + $('#question2').find(":selected").text() + '&Q3=' + $('#question3').find(":selected").text()+ '&Q4=Your e-mail address?';
 	$('#wh').text(encodeURI(uri.replace("multisig.htm", "index.htm")));
 
