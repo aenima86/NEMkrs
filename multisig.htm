@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Blog Post - Free Bulma template</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+  <link rel="stylesheet" id="bulma" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.3.2/css/bulma.min.css" />
+  <link rel="stylesheet" type="text/css" href="css/blog-post.css">
+</head>
+
+<body>
+  <div class="container">
+
+    <nav class="nav section" id="top">
+      <div class="nav-left">
+        <a class="nav-item">
+          <img src="img/krs-logo.png" alt="Bulma logo">
+        </a>
+      </div>
+
+      <div class="nav-center">
+        <a class="nav-item"  href="https://github.com/aenima86/NEMkrs">
+          <span class="icon">
+            <i class="fa fa-github"></i>
+          </span>
+        </a>
+        
+      </div>
+
+      <!-- This "nav-toggle" hamburger menu is only visible on mobile -->
+      <!-- You need JavaScript to toggle the "is-active" class on "nav-menu" -->
+      <span class="nav-toggle">
+        <span></span>
+      <span></span>
+      <span></span>
+      </span>
+
+      <!-- This "nav-menu" is hidden on mobile -->
+      <!-- Add the modifier "is-active" to display it on mobile -->
+      <div class="nav-right nav-menu">
+        <a class="nav-item" href='index.htm'>
+          Single
+        </a>
+        <a class="nav-item" href='multisig.htm'>
+          Multisig
+        </a>
+        
+
+        <span class="nav-item">
+          
+        <a class="button is-primary"  href="https://github.com/aenima86/NEMkrs">
+            <span class="icon">
+              <i class="fa fa-download"></i>
+            </span>
+            <span>Download</span>
+          </a>
+        </span>
+      </div>
+    </nav>
+
+    <section class="hero is-primary ">
+      <div class="hero-body">
+        <div class="container has-text-centered">
+          <h1 class="title is-2">
+            NEM
+          </h1>
+          <h2 class="subtitle is-4">
+           Multisig key recovery service
+          </h2>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- SECTION 1 -->
+    <section class="section blog" id="section1" >
+      <div class="container">
+        <div class="columns is-mobile">
+          <div class="column is-8 is-offset-2">
+            <div class="content blog-post section">
+              
+
+              
+
+
+              <div class="card is-fullwidth">
+                <header class="card-header">
+                  <p class="card-header-title">
+                    Multisig KRS - beta
+                  </p>
+                  <a class="card-header-icon" href="#top">
+                  <i class="fa fa-angle-up"></i>
+                </a>
+                </header>
+                <div class="card-content">
+                  <article class="media">
+                    <div class="media-content">
+                      <div class="content">
+                        <p>
+                          The multisig KRS will convert an account to an 2-3 multisignature account. Two (of three) new key will be generated, the 3. key can be recovered using the same method as the single key KRS.
+                        </p>
+                      </div>
+                    </div>
+                  </article>
+                </div>
+                <footer class="card-footer">
+                  <a class="card-footer-item" id="startBtn">Create multisig keys</a>
+                </footer>
+              </div>
+              <br><br>
+              <img src="http://i.imgur.com/Z0ye6gF.png" alt="Bulma logo">
+              <br><br>
+              <p>
+                A major problem wallet users encounter is the security of the keys. While most new secure wallets (in the crypto world) implement
+                multi-signature, in which 1 or 2 keys are created and stored by the user, a problem arises when the user
+                forgets one of the passwords as they would then lose access to the wallet and its contents. The idea with
+                a 2-3 multi signature wallet where the user controls 2/3 key and the service 1/3 is important because the
+                user is in control and his fund cannot be compromised in case the service shut down, get hacked etc. The
+                multi signature KRS tries to deal with creating 2-3 multisig accounts and the problem of recovering lost
+                keys. The idea is in basic pretty simple, the user provide a private key with enough funds for a multisig
+                conversion fee. Then the KRS create the 2-3 multi signature account where 1 key can be store by the user,
+                1 key can be store by the service and 1 key by the KRS. This is not entirely true, because the KRS doesn’t
+                store any keys but the user are provided with a unique link which can be activated along with the personal
+                identifiable information for recovering the last key. The KRS is open source which means that anyone could
+                run the service and the user in principal could use any of these providers to recover his keys.
+
+              </p>
+
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 2 -->
+    <section class="section blog" id="section2" style="display:none">
+      <div class="container">
+        <div class="columns is-mobile">
+          <div class="column is-8 is-offset-2">
+            <div class="content blog-post section">
+
+              <p>
+                  <span class="tag is-primary is-warning is-medium" >Beta - only for testnet.</span> Please provide a valid private key for convertion to multisig - the account need to have sufficient funds (0.5 xem) on the testnet to pay for the conversion.
+              </p>
+
+              <p class="control">
+                <input class="input" type="text" id="privatekeyMultisig" placeholder="private key (testnet)">
+              </p>
+
+              <p>
+                Select questions that in combination with the random seed should be conforming a key recovery option for you. This tool do not store any of your personal information. The information given here is only used to calculate a recovery key and the process is done in your browser on your computer (e.g. you can run this process offline if you like).
+              </p>
+               <p>
+                <span class="tag is-primary is-medium" >Random seed</span> <span class="tag is-light is-medium" id="rndseed">3645639877</span>
+              </p>
+              <!-- QUESTION 1-->
+              <div class="card is-fullwidth">
+                <header class="card-header">
+                  <p class="card-header-title">
+                    Question 1
+                  </p>
+                  <a class="card-header-icon" href="#top">
+                  <i class="fa fa-angle-up"></i>
+                </a>
+                </header>
+                <div class="card-content">
+                  <article class="media">
+                    <div class="media-content">
+                      <div class="content">
+
+                        <div class="field">
+                          <p class="control">
+                            <span class="select" >
+                              <select id="question1">
+                                <option>Select question</option>
+                                <option>Your national identification number?</option>
+                                <option>Your pasport number?</option>
+                                <option>Your driver's license number?</option>
+                                <option>Your creditcard number?</option>
+                                <option>Your telephone number?</option>
+                                <option>Your date of birth?</option>
+                                <option>Your home address?</option>
+                                <option>Your childhood nickname?</option>
+                                <option>The title of your favorite book?</option>
+                                <option>The title of your favorite song?</option>
+                                <option>The title of your favorite movie?</option>
+                                <option>The title of your favorite city?</option>
+                              </select>
+                            </span>
+                          </p>
+                          <p class="control">
+                            <input class="input" type="text" id="answer1" placeholder="answer...">
+                          </p>
+                        </div>
+
+                      </div>
+                    </div>
+                  </article>
+                </div>
+              </div>
+              <!-- / QUESTION 1 END -->
+              <br><br>
+              <!-- QUESTION 2-->
+              <div class="card is-fullwidth">
+                <header class="card-header">
+                  <p class="card-header-title">
+                    Question 2
+                  </p>
+                  <a class="card-header-icon" href="#top">
+                  <i class="fa fa-angle-up"></i>
+                </a>
+                </header>
+                <div class="card-content">
+                  <article class="media">
+                    <div class="media-content">
+                      <div class="content">
+
+                        <div class="field">
+                          <p class="control">
+                            <span class="select" >
+                              <select id="question2">
+                                <option>Select question</option>
+                                <option>Your national identification number?</option>
+                                <option>Your pasport number?</option>
+                                <option>Your driver's license number?</option>
+                                <option>Your creditcard number?</option>
+                                <option>Your telephone number?</option>
+                                <option>Your date of birth?</option>
+                                <option>Your home address?</option>
+                                <option>Your childhood nickname?</option>
+                                <option>The title of your favorite book?</option>
+                                <option>The title of your favorite song?</option>
+                                <option>The title of your favorite movie?</option>
+                                <option>The title of your favorite city?</option>
+                              </select>
+                            </span>
+                          </p>
+                          <p class="control">
+                            <input class="input" type="text" id="answer2" placeholder="answer...">
+                          </p>
+                        </div>
+
+                      </div>
+                    </div>
+                  </article>
+                </div>
+              </div>
+              <!-- / QUESTION 2 END -->
+              <br><br>
+              <!-- QUESTION 3-->
+              <div class="card is-fullwidth">
+                <header class="card-header">
+                  <p class="card-header-title">
+                    Question 4
+                  </p>
+                  <a class="card-header-icon" href="#top">
+                  <i class="fa fa-angle-up"></i>
+                </a>
+                </header>
+                <div class="card-content">
+                  <article class="media">
+                    <div class="media-content">
+                      <div class="content">
+
+                        <div class="field">
+                          <p class="control">
+                            <span class="select" >
+                              <select id="question3">
+                                <option>Select question</option>
+                                <option>Your national identification number?</option>
+                                <option>Your pasport number?</option>
+                                <option>Your driver's license number?</option>
+                                <option>Your creditcard number?</option>
+                                <option>Your telephone number?</option>
+                                <option>Your date of birth?</option>
+                                <option>Your home address?</option>
+                                <option>Your childhood nickname?</option>
+                                <option>The title of your favorite book?</option>
+                                <option>The title of your favorite song?</option>
+                                <option>The title of your favorite movie?</option>
+                                <option>The title of your favorite city?</option>
+                              </select>
+                            </span>
+                          </p>
+                          <p class="control">
+                            <input class="input" type="text" id="answer3" placeholder="answer...">
+                          </p>
+                        </div>
+
+                      </div>
+                    </div>
+                  </article>
+                </div>
+              </div>
+              <!-- / QUESTION 3 END -->
+              <br><br>
+              <!-- QUESTION 4-->
+              <div class="card is-fullwidth">
+                <header class="card-header">
+                  <p class="card-header-title">
+                    Question 4
+                  </p>
+                  <a class="card-header-icon" href="#top">
+                  <i class="fa fa-angle-up"></i>
+                </a>
+                </header>
+                <div class="card-content">
+                  <article class="media">
+                    <div class="media-content">
+                      <div class="content">
+
+                        <div class="field">
+                          <p class="control">
+                            Your e-mail address?
+                          </p>
+                          <p class="control">
+                            <input class="input" type="text" id="answer4" placeholder="answer...">
+                          </p>
+                        </div>
+
+                      </div>
+                    </div>
+                  </article>
+                </div>
+              </div>
+              <!-- / QUESTION 4 END -->
+              <br><br>
+              <a class="button is-primary" id="nextbtnSec2">
+                  <span class="icon is-small">
+                    <i class="fa fa-check"></i>
+                  </span>
+                  <span>Done</span>
+              </a>
+
+
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- SECTION 3 -->
+    <section class="section blog" id="section3" style="display:none">
+      <div class="container">
+        <div class="columns is-mobile">
+          <div class="column is-8 is-offset-2">
+            <div class="content blog-post section">
+
+
+              <p>
+                Super! we are almost done. Make sure your answers look correct.
+              </p>
+
+              <p>
+                <span class="tag is-warning is-medium" >Private key for conversion</span> <span class="tag is-light is-medium" id="PK4C"></span>
+              </p>
+
+              <p>
+                <span class="tag is-primary is-medium" id="q1">Your national identification number?</span> <span class="tag is-light is-medium" id="a1">364563-9877</span>
+              </p>
+              <p>
+                <span class="tag is-primary is-medium" id="q2">Your national identification number?</span> <span class="tag is-light is-medium" id="a2">364563-9877</span>
+              </p>
+              <p>
+                <span class="tag is-primary is-medium" id="q3">Your national identification number?</span> <span class="tag is-light is-medium" id="a3">364563-9877</span>
+              </p>
+              <p>
+                <span class="tag is-primary is-medium" id="q4">Your national identification number?</span> <span class="tag is-light is-medium" id="a4">364563-9877</span>
+              </p>
+              <br><br>
+
+              <a class="button is-primary" id="nextbtnSec3">
+                  <span class="icon is-small">
+                    <i class="fa fa-check"></i>
+                  </span>
+                  <span>Create</span>
+              </a>
+              <a class="button is-danger is-outlined" id="backbtnSec3">
+                <span>Change</span>
+                <span class="icon is-small">
+                  <i class="fa fa-times"></i>
+                </span>
+              </a>
+
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 4 -->
+    <section class="section blog" id="section4" style="display:none">
+      <div class="container">
+        <div class="columns is-mobile">
+          <div class="column is-8 is-offset-2">
+            <div class="content blog-post section">
+
+
+              <p>
+                The private keys (three) is now calculated and the account is converted to a 2-3 multisignature account. Your can give one key to a third party (a service), if  you wants to stop using the service, you can use the krs to get the third key and regain control. 
+              </p>
+
+              <p>
+                <span class="tag is-primary is-medium" >Private key 1</span> <span class="tag is-light is-medium" id="pk1"></span>
+              </p>
+
+              <p>
+                <span class="tag is-primary is-medium" >Private key 2</span> <span class="tag is-light is-medium" id="pk2"></span>
+              </p>
+
+              <p>
+                <span class="tag is-primary is-medium" >Private key 3</span> <span class="tag is-light is-medium" id="pk3"> - Hidden -</span>
+              </p>
+
+              <p>
+                You can at recover the 3. private key at anytime using the designated unique webhook. Remember to bookmark it or save it using another method. 
+              </p>
+
+              <p >
+                <span class="tag is-primary is-medium" >Webhook:</span> 
+                <div class="field">
+                  <p class="control">
+                    <textarea class="textarea is-hovered" placeholder="Hovered textarea" id="wh"></textarea>
+                  </p>
+                </div>
+              </p>
+              
+
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </div>
+
+
+
+
+  <footer class="footer">
+    <div class="container">
+      <div class="content has-text-centered">
+        <p>
+          <strong>NEM krs</strong>. The source code is licensed
+          <a href="http://opensource.org/licenses/mit-license.php">MIT</a>. 
+        </p>
+        <p>
+          <a class="icon" href="https://github.com/">
+            <i class="fa fa-github"></i>
+          </a>
+        </p>
+      </div>
+    </div>
+  </footer>
+</body>
+</script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="js/nem-sdk.js"></script>
+<script src="js/scriptMulti.js"></script>
+
+</html>

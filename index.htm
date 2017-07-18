@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Blog Post - Free Bulma template</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+  <link rel="stylesheet" id="bulma" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.3.2/css/bulma.min.css" />
+  <link rel="stylesheet" type="text/css" href="css/blog-post.css">
+</head>
+
+<body>
+  <div class="container">
+
+    <nav class="nav section" id="top">
+      <div class="nav-left">
+        <a class="nav-item">
+          <img src="img/krs-logo.png" alt="Bulma logo">
+        </a>
+      </div>
+
+      <div class="nav-center">
+        <a class="nav-item" href="https://github.com/aenima86/NEMkrs">
+          <span class="icon">
+            <i class="fa fa-github"></i>
+          </span>
+        </a>
+        
+      </div>
+
+      <!-- This "nav-toggle" hamburger menu is only visible on mobile -->
+      <!-- You need JavaScript to toggle the "is-active" class on "nav-menu" -->
+      <span class="nav-toggle">
+        <span></span>
+      <span></span>
+      <span></span>
+      </span>
+
+      <!-- This "nav-menu" is hidden on mobile -->
+      <!-- Add the modifier "is-active" to display it on mobile -->
+      <div class="nav-right nav-menu">
+        <a class="nav-item" href='index.htm'>
+          Single
+        </a>
+        <a class="nav-item" href='multisig.htm'>
+          Multisig
+        </a>
+
+        <span class="nav-item">
+          
+        <a class="button is-primary"  href="https://github.com/aenima86/NEMkrs">
+            <span class="icon">
+              <i class="fa fa-download"></i>
+            </span>
+            <span>Download</span>
+          </a>
+        </span>
+      </div>
+    </nav>
+
+    <section class="hero is-primary ">
+      <div class="hero-body">
+        <div class="container has-text-centered">
+          <h1 class="title is-2">
+            NEM
+          </h1>
+          <h2 class="subtitle is-4">
+            Single key recovery service
+          </h2>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- SECTION 1 -->
+    <section class="section blog" id="section1" >
+      <div class="container">
+        <div class="columns is-mobile">
+          <div class="column is-8 is-offset-2">
+            <div class="content blog-post section">
+
+              <div class="card is-fullwidth">
+                <header class="card-header">
+                  <p class="card-header-title">
+                    Single key
+                  </p>
+                  <a class="card-header-icon" href="#top">
+                  <i class="fa fa-angle-up"></i>
+                </a>
+                </header>
+                <div class="card-content">
+                  <article class="media">
+                    <div class="media-content">
+                      <div class="content">
+                        <p>
+                          The <strong>Key Recovery Service (KRS)</strong> is a method of creating a private key for the NEM
+                          blockchain which can be recovered if you loses your key. The method utilizes a combination of a
+                          random seed + personally identifiable information.
+                        </p>
+                      </div>
+                    </div>
+                  </article>
+                </div>
+                <footer class="card-footer">
+                  <a class="card-footer-item" id="startBtn">Create key</a>
+                </footer>
+              </div>
+              <br><br>
+              <img src="img/KRS.png" alt="Bulma logo">
+              <br><br>
+              <p>
+                The recovery of keys is a big challenge in all cryptocurrencies. One of the main concerns for many people using cryptocurrencies
+                is security of their funds. This is not an easy task for most people, because we are used to centralized
+                organizations taking care of security and supporting us when we have forgotten our password. In crypto-land
+                our funds are forever lost if we loses our keys or in some cases third party services have scammed people,
+                stealing all their crypto coins. This is why a Key Recovery Service (KRS) is highly relevant for adoption
+                of a cryptocurrency such as NEM. This KRS idea comprises that the user uses the KRS service to generate a
+                private key. The key is generated based on a random seed + personal identifiable information. Furthermore,
+                a unique webhook is generated – this can be stored without high security (e.g. in email or notes) because
+                the webhook can only be activated to restore the keys in combination with the personal identifiable information
+                (which is only known to the user). The user can choose which personal identifiable information he wishes
+                to identify him, for example could this information be the title of his favorite book in combination with
+                his passport number and his credit card number. Information which is only known to the user creating the
+                keys. The KRS service is all browser based which is important for security because no information is leaving
+                the users own computer. Subsequently, the users new private key is calculated and can be imported into the
+                users wallet. Furthermore, a unique link is created which the user can store in a non-secure manner, and
+                can be activated for a recovery of his key.
+              </p>
+
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 2 -->
+    <section class="section blog" id="section2" style="display:none">
+      <div class="container">
+        <div class="columns is-mobile">
+          <div class="column is-8 is-offset-2">
+            <div class="content blog-post section">
+
+              <p>
+                Select questions that in combination with the random seed should be conforming a key recovery option for you. This tool do not store any of your personal information. The information given here is only used to calculate a recovery key and the process is done in your browser on your computer (e.g. you can run this process offline if you like).
+              </p>
+               <p>
+                <span class="tag is-primary is-medium" >Random seed</span> <span class="tag is-light is-medium" id="rndseed">3645639877</span>
+              </p>
+              <!-- QUESTION 1-->
+              <div class="card is-fullwidth">
+                <header class="card-header">
+                  <p class="card-header-title">
+                    Question 1
+                  </p>
+                  <a class="card-header-icon" href="#top">
+                  <i class="fa fa-angle-up"></i>
+                </a>
+                </header>
+                <div class="card-content">
+                  <article class="media">
+                    <div class="media-content">
+                      <div class="content">
+
+                        <div class="field">
+                          <p class="control">
+                            <span class="select" >
+                              <select id="question1">
+                                <option>Select question</option>
+                                <option>Your national identification number?</option>
+                                <option>Your pasport number?</option>
+                                <option>Your driver's license number?</option>
+                                <option>Your creditcard number?</option>
+                                <option>Your telephone number?</option>
+                                <option>Your date of birth?</option>
+                                <option>Your home address?</option>
+                                <option>Your childhood nickname?</option>
+                                <option>The title of your favorite book?</option>
+                                <option>The title of your favorite song?</option>
+                                <option>The title of your favorite movie?</option>
+                                <option>The title of your favorite city?</option>
+                              </select>
+                            </span>
+                          </p>
+                          <p class="control">
+                            <input class="input" type="text" id="answer1" placeholder="answer...">
+                          </p>
+                        </div>
+
+                      </div>
+                    </div>
+                  </article>
+                </div>
+              </div>
+              <!-- / QUESTION 1 END -->
+              <br><br>
+              <!-- QUESTION 2-->
+              <div class="card is-fullwidth">
+                <header class="card-header">
+                  <p class="card-header-title">
+                    Question 2
+                  </p>
+                  <a class="card-header-icon" href="#top">
+                  <i class="fa fa-angle-up"></i>
+                </a>
+                </header>
+                <div class="card-content">
+                  <article class="media">
+                    <div class="media-content">
+                      <div class="content">
+
+                        <div class="field">
+                          <p class="control">
+                            <span class="select" >
+                              <select id="question2">
+                                <option>Select question</option>
+                                <option>Your national identification number?</option>
+                                <option>Your pasport number?</option>
+                                <option>Your driver's license number?</option>
+                                <option>Your creditcard number?</option>
+                                <option>Your telephone number?</option>
+                                <option>Your date of birth?</option>
+                                <option>Your home address?</option>
+                                <option>Your childhood nickname?</option>
+                                <option>The title of your favorite book?</option>
+                                <option>The title of your favorite song?</option>
+                                <option>The title of your favorite movie?</option>
+                                <option>The title of your favorite city?</option>
+                              </select>
+                            </span>
+                          </p>
+                          <p class="control">
+                            <input class="input" type="text" id="answer2" placeholder="answer...">
+                          </p>
+                        </div>
+
+                      </div>
+                    </div>
+                  </article>
+                </div>
+              </div>
+              <!-- / QUESTION 2 END -->
+              <br><br>
+              <!-- QUESTION 3-->
+              <div class="card is-fullwidth">
+                <header class="card-header">
+                  <p class="card-header-title">
+                    Question 4
+                  </p>
+                  <a class="card-header-icon" href="#top">
+                  <i class="fa fa-angle-up"></i>
+                </a>
+                </header>
+                <div class="card-content">
+                  <article class="media">
+                    <div class="media-content">
+                      <div class="content">
+
+                        <div class="field">
+                          <p class="control">
+                            <span class="select" >
+                              <select id="question3">
+                                <option>Select question</option>
+                                <option>Your national identification number?</option>
+                                <option>Your pasport number?</option>
+                                <option>Your driver's license number?</option>
+                                <option>Your creditcard number?</option>
+                                <option>Your telephone number?</option>
+                                <option>Your date of birth?</option>
+                                <option>Your home address?</option>
+                                <option>Your childhood nickname?</option>
+                                <option>The title of your favorite book?</option>
+                                <option>The title of your favorite song?</option>
+                                <option>The title of your favorite movie?</option>
+                                <option>The title of your favorite city?</option>
+                              </select>
+                            </span>
+                          </p>
+                          <p class="control">
+                            <input class="input" type="text" id="answer3" placeholder="answer...">
+                          </p>
+                        </div>
+
+                      </div>
+                    </div>
+                  </article>
+                </div>
+              </div>
+              <!-- / QUESTION 3 END -->
+              <br><br>
+              <!-- QUESTION 4-->
+              <div class="card is-fullwidth">
+                <header class="card-header">
+                  <p class="card-header-title">
+                    Question 4
+                  </p>
+                  <a class="card-header-icon" href="#top">
+                  <i class="fa fa-angle-up"></i>
+                </a>
+                </header>
+                <div class="card-content">
+                  <article class="media">
+                    <div class="media-content">
+                      <div class="content">
+
+                        <div class="field">
+                          <p class="control">
+                            Your e-mail address?
+                          </p>
+                          <p class="control">
+                            <input class="input" type="text" id="answer4" placeholder="answer...">
+                          </p>
+                        </div>
+
+                      </div>
+                    </div>
+                  </article>
+                </div>
+              </div>
+              <!-- / QUESTION 4 END -->
+              <br><br>
+              <a class="button is-primary" id="nextbtnSec2">
+                  <span class="icon is-small">
+                    <i class="fa fa-check"></i>
+                  </span>
+                  <span>Done</span>
+              </a>
+
+
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- SECTION 3 -->
+    <section class="section blog" id="section3" style="display:none">
+      <div class="container">
+        <div class="columns is-mobile">
+          <div class="column is-8 is-offset-2">
+            <div class="content blog-post section">
+
+
+              <p>
+                Super! we are almost done. Make sure your answers look correct.
+              </p>
+
+              <p>
+                <span class="tag is-primary is-medium" id="q1">Your national identification number?</span> <span class="tag is-light is-medium" id="a1">364563-9877</span>
+              </p>
+              <p>
+                <span class="tag is-primary is-medium" id="q2">Your national identification number?</span> <span class="tag is-light is-medium" id="a2">364563-9877</span>
+              </p>
+              <p>
+                <span class="tag is-primary is-medium" id="q3">Your national identification number?</span> <span class="tag is-light is-medium" id="a3">364563-9877</span>
+              </p>
+              <p>
+                <span class="tag is-primary is-medium" id="q4">Your national identification number?</span> <span class="tag is-light is-medium" id="a4">364563-9877</span>
+              </p>
+              <br><br>
+
+              <a class="button is-primary" id="nextbtnSec3">
+                  <span class="icon is-small">
+                    <i class="fa fa-check"></i>
+                  </span>
+                  <span>Done</span>
+              </a>
+              <a class="button is-danger is-outlined" id="backbtnSec3">
+                <span>Change</span>
+                <span class="icon is-small">
+                  <i class="fa fa-times"></i>
+                </span>
+              </a>
+
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 4 -->
+    <section class="section blog" id="section4" style="display:none">
+      <div class="container">
+        <div class="columns is-mobile">
+          <div class="column is-8 is-offset-2">
+            <div class="content blog-post section">
+
+
+              <p>
+                The private key is now calculated. Your can import it into your NEM wallet. The recovery hook (webadress) can be used to recover your private key, you can save it in a non-secure environment, e.g. send it to your own e-mail or bookmark it. 
+              </p>
+
+              <p>
+                <span class="tag is-primary is-medium" >Private key</span> <span class="tag is-light is-medium" id="pk"></span>
+              </p>
+
+              <p >
+                <span class="tag is-primary is-medium" >Webhook</span> 
+                <div class="field">
+                  <p class="control">
+                    <textarea class="textarea is-hovered" placeholder="Hovered textarea" id="wh"></textarea>
+                  </p>
+                </div>
+              </p>
+              
+
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </div>
+
+
+
+
+  <footer class="footer">
+    <div class="container">
+      <div class="content has-text-centered">
+        <p>
+          <strong>NEM krs</strong>. The source code is licensed
+          <a href="http://opensource.org/licenses/mit-license.php">MIT</a>. 
+        </p>
+        <p>
+          <a class="icon" href="https://github.com/">
+            <i class="fa fa-github"></i>
+          </a>
+        </p>
+      </div>
+    </div>
+  </footer>
+</body>
+</script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="js/nem-sdk.js"></script>
+<script src="js/script.js"></script>
+
+</html>
