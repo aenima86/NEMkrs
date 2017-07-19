@@ -64,7 +64,7 @@ $("#nextbtnSec3").click(function(){
 
 	$(window).scrollTop(0);
 
-	var passphrase = $('#rndseed').text()+$('#answer1').val()+$('#answer2').val()+$('#answer3').val()+$('#answer4').val();
+	var passphrase = $('#rndseed').text()+$('#answer1').val().toLowerCase()+$('#answer2').val().toLowerCase()+$('#answer3').val().toLowerCase()+$('#answer4').val().toLowerCase();
 	var pKey = makePrivateKey(passphrase);
 	$('#pk').text(pKey);
 

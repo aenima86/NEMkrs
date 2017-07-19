@@ -101,7 +101,7 @@ $(document).ready(function () {
 		var publicKey2 = keyPair2.publicKey.toString();
 
 		// Create key 3 (recovery key)
-		var passphrase = $('#rndseed').text()+$('#answer1').val()+$('#answer2').val()+$('#answer3').val()+$('#answer4').val();
+		var passphrase = $('#rndseed').text()+$('#answer1').val().toLowerCase()+$('#answer2').val().toLowerCase()+$('#answer3').val().toLowerCase()+$('#answer4').val().toLowerCase();
 		var privateKey3 = makePrivateKey(passphrase);
 		var keyPair3 = nem.crypto.keyPair.create(privateKey3);
 		var publicKey3 = keyPair3.publicKey.toString();
