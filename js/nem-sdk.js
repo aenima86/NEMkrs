@@ -6847,7 +6847,7 @@ module.exports = {
  *
  * @type {string}
  */
-var defaultTestnet = 'http://192.3.61.243';
+var defaultTestnet = 'http://104.128.226.60' //'http://bob.nem.ninja';
 
 /**
  * The default mainnet node
@@ -7588,7 +7588,10 @@ var send = function send(common, entity, endpoint) {
     if (common.privateKey.length !== 64 && common.privateKey.length !== 66) throw new Error('Invalid private key, length must be 64 or 66 characters !');
     if (!_helpers2.default.isHexadecimal(common.privateKey)) throw new Error('Private key must be hexadecimal only !');
     var kp = _keyPair2.default.create(_helpers2.default.fixPrivateKey(common.privateKey));
+    console.log(entity);
+   console.log(JSON.stringify(entity));
     var result = _serialization2.default.serializeTransaction(entity);
+    console.log(result);
     var signature = kp.sign(result);
     var obj = {
         'data': _convert2.default.ua2hex(result),
@@ -67965,13 +67968,11 @@ function randomBytes (size, cb) {
   if (size > 65536) throw new Error('requested too many random bytes')
   // in case browserify  isn't using the Uint8Array version
   var rawBytes = new global.Uint8Array(size)
-  console.log(rawBytes);
 
   // This will not work in older browsers.
   // See https://developer.mozilla.org/en-US/docs/Web/API/window.crypto.getRandomValues
   if (size > 0) {  // getRandomValues fails on IE if size == 0
     crypto.getRandomValues(rawBytes)
-    console.log(rawBytes);
   }
   // phantomjs doesn't like a buffer being passed here
   var bytes = new Buffer(rawBytes.buffer)
