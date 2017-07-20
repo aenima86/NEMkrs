@@ -1,5 +1,3 @@
-
-
 $(document).ready(function () {
 
 	// Load nem-browser library
@@ -17,13 +15,6 @@ $(document).ready(function () {
 	// Get an empty common object to hold pass and key
 	var common = nem.model.objects.get("common");var common = nem.model.objects.get("common");
 
-	// Create random bytes from PRNG
-	var rBytes = nem.crypto.nacl.randomBytes(32);
-
-	// Convert the random bytes to hex
-	var randomSeed = uaConv(rBytes);
-	$('#rndseed').text(randomSeed);
-
 	// Set default amount in view. It is text input so we can handle dot and comma as decimal mark easily (need cleaning but provided by the library)
 	
 	var rBytes1 = '';
@@ -39,12 +30,9 @@ $(document).ready(function () {
 	var keyPair3 = '';
 	
 
-	var pub1 ='';
-	//var pub1 ='bfdeadb7745e35044c0abf64d87165f0f528b12fa28e15e1efd92373d147399a';
-	var pub2='';
-	//var pub2='3aa1c0ddbbae8cdf8968b23049b4dd95ac47f33f1489224cb11a08260ebfaac6';
-	var pub3='';
-	//var pub3='92956540274d22929ded62ede21e7f3bf26a235800fd4a8ca0123ff02d43d3e0';
+	var pub1 ='02ef091a86056808a04f43bfacbe1e6a6bac2ade6d3d1cdd8a7a75b17b634fdd';
+		var pub2='9673b0ecab4475cce52fdd6e3e255973971ad30ede601edfb025a6203023450c';
+		var pub3='f64af5807c04defa850378168dbe565251896a880b1cbfe6ceb6566ab9c59629';
 
 	
 
@@ -53,10 +41,6 @@ $(document).ready(function () {
      */
 	function send(key4conv,pub1,pub2,pub3) {
 
-		/*
-		var rBytes = nem1.crypto.nacl.randomBytes(32);
-		var privateKeyy = nem1.utils.convert.ua2hex(rBytes1);
-		key4conv = privateKeyy;*/
 
 		// Set the private key in common object
 		common.privateKey = key4conv; 
@@ -69,7 +53,7 @@ $(document).ready(function () {
 		console.log(publicKey);
 		console.log(address);
 
-		/*
+
 		// Set the cleaned amount into transfer transaction object
 		transferTransaction.amount = nem.utils.helpers.cleanTextAmount(0);
 
@@ -81,55 +65,16 @@ $(document).ready(function () {
 
 		// Prepare the updated transfer transaction object
 		var transactionEntity = nem.model.transactions.prepare("transferTransaction")(common, transferTransaction, nem.model.network.data.testnet.id);
-		console.log(JSON.stringify(transactionEntity));
+		console.log(transactionEntity);
 
 		strtest = '{ "timeStamp": 9111526, "fee": 500000, "type": 4097, "deadline": 9154726, "version": -1744830462, "signer": "'+publicKey+'", "modifications": [ { "modificationType": 1, "cosignatoryAccount": "'+pub1+'" },{ "modificationType": 1, "cosignatoryAccount": "'+pub2+'" },{ "modificationType": 1, "cosignatoryAccount": "'+pub3+'" } ], "minCosignatories" : { "relativeChange": 2 } }';
 		var obj1 = JSON.parse(strtest);
 		obj1.timeStamp = transactionEntity.timeStamp
 		obj1.deadline = transactionEntity.deadline
 
-	
 
 		// Serialize transfer transaction and announce
 		nem.model.transactions.send(common, obj1, endpoint).then(function(res){
-			// If code >= 2, it's an error
-			if (res.code >= 2) {
-				alert(res.message);
-			} else {
-				alert(res.message);
-				$("#section3").hide();
-				$("#section4").fadeIn();
-			}
-		}, function(err) {
-			alert(err);
-		}); */
-
-
-
-		var tx = publicKey;
-		var signatoryArray = [];
-		var address1 = nem.model.address.toAddress(pub1, nem.model.network.data.testnet.id)
-		signatoryArray.push({
-                address: address1,
-                pubKey: pub1
-            });
-		var address2 = nem.model.address.toAddress(pub1, nem.model.network.data.testnet.id)
-		signatoryArray.push({
-                address: address2,
-                pubKey: pub2
-            });
-		var address3 = nem.model.address.toAddress(pub1, nem.model.network.data.testnet.id)
-		signatoryArray.push({
-                address: address3,
-                pubKey: pub3
-            });
-		
-		var transactionEntity = constructAggregate(tx, signatoryArray);
-		console.log('NEW entity');
-		console.log(JSON.stringify(transactionEntity));
-
-		// Serialize transfer transaction and announce
-		nem.model.transactions.send(common, transactionEntity, endpoint).then(function(res){
 			// If code >= 2, it's an error
 			if (res.code >= 2) {
 				alert(res.message);
@@ -183,8 +128,9 @@ $(document).ready(function () {
 		privateKey1 = nem1.utils.convert.ua2hex(rBytes1);
 		keyPair1 = nem1.crypto.keyPair.create(privateKey1);
 		//pub1 = keyPair1.publicKey.toString();
-		pub1 = ua2hexConv(keyPair1.publicKey.data);
+		//pub1 = ua2hexConv(keyPair1.publicKey.data);
 
+		
 
 
 		// Create key 2
@@ -192,7 +138,7 @@ $(document).ready(function () {
 		privateKey2 = nem2.utils.convert.ua2hex(rBytes2);
 		keyPair2 = nem2.crypto.keyPair.create(privateKey2);
 		//pub2 = keyPair2.publicKey.toString();
-		pub2 = ua2hexConv(keyPair2.publicKey.data);
+		//pub2 = ua2hexConv(keyPair2.publicKey.data);
 
 
 		// Create key 3 (recovery key)
@@ -200,7 +146,7 @@ $(document).ready(function () {
 		privateKey3 = nem3.crypto.helpers.derivePassSha(passphrase, 6000).priv; 
 		keyPair3 = nem3.crypto.keyPair.create(privateKey3);
 		//pub3 = keyPair3.publicKey.toString();
-		pub3 = ua2hexConv(keyPair3.publicKey.data);
+		//pub3 = ua2hexConv(keyPair3.publicKey.data);
 
 		$('#pk1').text(privateKey1);
 		$('#pk2').text(privateKey2);
@@ -240,88 +186,6 @@ $(document).ready(function () {
 		return s;
 	};
 
-	function uaConv(ua) {
-		var s = '';
-		var _hexEncodeArrayy = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'a', 'b', 'c', 'd', 'e', 'f'];
-		for (var i = 0; i < ua.length; i++) {
-			var code = ua[i];
-			s += _hexEncodeArrayy[code >>> 4];
-			s += _hexEncodeArrayy[code & 0x0F];
-		}
-		return s;
-	};
-
-	function constructAggregate(tx, signatoryArray) {
-        var timeStamp = createNEMTimeStamp();
-        var version = -1744830462;
-        var due = nem.model.network.data.testnet.id === nem.model.network.data.testnet.id ? 60 : 24 * 60;
-        var data = CREATE_DATA(4097, tx, timeStamp, due, version);
-        var totalFee = (1) * 1000000;
-        var custom = {
-            'fee': totalFee,
-            'modifications': [],
-            'minCosignatories': {
-                'relativeChange': 2
-            }
-        };
-        for (var i = 0; i < signatoryArray.length; i++) {
-            custom.modifications.push({
-                "modificationType": 1,
-                "cosignatoryAccount": signatoryArray[i].pubKey
-            });
-        }
-
-        // Sort modification array by addresses
-        if (custom.modifications.length > 1) {
-            custom.modifications.sort((a, b) => {
-                if ( nem.model.address.toAddress(a.cosignatoryAccount, nem.model.network.data.testnet.id) < nem.model.address.toAddress(b.cosignatoryAccount, nem.model.network.data.testnet.id)) return -1;
-                if (nem.model.address.toAddress(a.cosignatoryAccount, nem.model.network.data.testnet.id) > nem.model.address.toAddress(b.cosignatoryAccount, nem.model.network.data.testnet.id)) return 1;
-                return 0;
-            });
-        }
-
-        var entity = $.extend(data, custom);
-        return entity;
-    };
-
-	// NEM epoch time
-	var NEM_EPOCH = Date.UTC(2015, 2, 29, 0, 6, 25, 0);
-
-	/**
-	* createNEMTimeStamp() Create a time stamp for a NEM transaction
-	*
-	* @return NEM transaction timestamp
-	*/
-	function createNEMTimeStamp() {
-		return Math.floor((Date.now() / 1000) - (NEM_EPOCH / 1000));
-	}
-
-	 /**
-     * CREATE_DATA() Create the common part of a transaction
-     *
-     * @param txType: The type of the transaction
-     * @param senderPublicKey: The sender public key
-     * @param timeStamp: The timestamp of the transation
-     * @param due: The deadline in minutes
-     * @param version: The network version
-     *
-     * return: common transaction object
-     */
-    function CREATE_DATA(txtype, senderPublicKey, timeStamp, due, version) {
-        return {
-            'type': txtype,
-            'version': version,
-            'signer': senderPublicKey,
-            'timeStamp': timeStamp,
-            'deadline': timeStamp + due * 60
-        };
-    }
-
-
-
-	
-
-	console.log(nem.model.network.data.testnet.id === nem.model.network.data.testnet.id ? 60 : 24 * 60);
 
 
 });

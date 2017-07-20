@@ -6847,7 +6847,7 @@ module.exports = {
  *
  * @type {string}
  */
-var defaultTestnet = 'http://104.128.226.60' //'http://bob.nem.ninja';
+var defaultTestnet = 'http://23.228.67.85'; //'http://104.128.226.60'; //'http://bob.nem.ninja';
 
 /**
  * The default mainnet node
@@ -7588,15 +7588,17 @@ var send = function send(common, entity, endpoint) {
     if (common.privateKey.length !== 64 && common.privateKey.length !== 66) throw new Error('Invalid private key, length must be 64 or 66 characters !');
     if (!_helpers2.default.isHexadecimal(common.privateKey)) throw new Error('Private key must be hexadecimal only !');
     var kp = _keyPair2.default.create(_helpers2.default.fixPrivateKey(common.privateKey));
-    console.log(entity);
-   console.log(JSON.stringify(entity));
+     
     var result = _serialization2.default.serializeTransaction(entity);
-    console.log(result);
+    
+    console.log(JSON.stringify(entity));
     var signature = kp.sign(result);
     var obj = {
         'data': _convert2.default.ua2hex(result),
         'signature': signature.toString()
     };
+   
+
     return _requests2.default.transaction.announce(endpoint, JSON.stringify(obj));
 };
 
