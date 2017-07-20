@@ -93,7 +93,7 @@ We would have to create a JSON object that looks similar to this (test network):
         }
         }
 ```
-After the transaction is signed and is accepted by the network by including it into a block, the Johns account is now a 2 of 3 multisig account. From this point on, only the cosignatories can initiate a transaction for the Johns account. Also, any transaction from account John must be a multisig transaction. We recommend you create a new testnet account and use ![ the test net faucet]( http://test-nem-faucet.44uk.net/) to get some xem to test this KRS.
+After the transaction is signed and is accepted by the network by including it into a block, the Johns account is now a 2 of 3 multisig account. From this point on, only the cosignatories can initiate a transaction for the Johns account. Also, any transaction from account John must be a multisig transaction. We recommend you create a new testnet account and use [ the test net faucet]( http://test-nem-faucet.44uk.net/) to get some xem to test this KRS.
 
 *Credits*
 Author: Aenima
