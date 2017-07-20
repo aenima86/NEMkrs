@@ -13,6 +13,18 @@ This KRS idea comprises that the user uses the KRS service to generate a private
 
 ![KRS](http://i.imgur.com/JHpkJqJ.png)
 
+The user can choose which personal identifiable information he wishes to identify him, for example could this information be the title of his favorite book in combination with his passport number and his credit card number. Information which is only known to the user creating the keys. The KRS service is all browser based, which is important for security because no information is leaving the users own computer. Subsequently, the users new private key is calculated and can be imported into the user’s wallet. Furthermore, a unique link ## Key Recovery Service (KRS)
+The recovery of keys is a big challenge in all cryptocurrencies. One of the main concerns for many people using cryptocurrencies is security of their funds. This is not an easy task for most people, because we are used to centralized organizations taking care of security and supporting us when we have forgotten our password. In crypto-land our funds are forever lost if we loses our keys or in some cases, a third party services have scammed people, stealing all their crypto coins. This is why a Key Recovery Service (KRS) is highly relevant for adoption of a cryptocurrency such as NEM.
+
+The KRS is built around two use cases:
+* Single key KRS: a user loses his private key and needs to recover the key. 
+* Multisig KRS: a user wants to use a third-party service (e.g. a wallet), but want to make sure he can access his funds if the service shuts down, he forgets his password or he loses faith in the service. 
+
+## Single key KRS
+This KRS idea comprises that the user uses the KRS service to generate a private key. The key is generated based on a random seed + personal identifiable information. Furthermore, a unique webhook is generated – this can be stored without high security (e.g. in email or notes) because the webhook can only be activated to restore the keys in combination with the personal identifiable information (which is only known to the user).
+
+![KRS](http://i.imgur.com/JHpkJqJ.png)
+
 The user can choose which personal identifiable information he wishes to identify him, for example could this information be the title of his favorite book in combination with his passport number and his credit card number. Information which is only known to the user creating the keys. The KRS service is all browser based, which is important for security because no information is leaving the users own computer. Subsequently, the users new private key is calculated and can be imported into the user’s wallet. Furthermore, a unique link is created which the user can store in a non-secure manner, and can be activated for a recovery of his key.  
 
 ## Multisig KRS
@@ -60,12 +72,13 @@ var publicKey1 = keyPair1.publicKey.toString();
 The last key is created in the same manner described for the single key KRS. This key is hidden from the user, but can be recovered using the web hook with the random seed and the questions. Now we have the private keys and corresponding public keys for the three keypair (+ the private key provided by the user) needed to convert the multi signature account. We do this by broadcasting a multisig transaction to the network.
 
 Assuming we want to convert Johns account with public key:
-Account **'John'** public key: a1aaca6c17a24252e674d155713cdf55996ad00175be4af02a20c67b59f9fe8a
+* Account **'John'** public key: a1aaca6c17a24252e674d155713cdf55996ad00175be4af02a20c67b59f9fe8a
+
 
 Into a 2 of 3 multisig account meaning the account has 3 cosignatories and at least 2 cosignatories have to sign to complete a multisig transaction
-Cosignatory **'Key 1'** public key: 6083df7119d43e815ed2967c795f806f6b73f8f92a56a7611e3848816ec50958
-Cosignatory **'Key 2'** public key: 0662ed29cbfa7038530fb7f52df865eed6708d51bc7a24bcd05db35185b53c70
-Cosignatory **'KRS Key'** public key: cc61676a4275abcffd10a9ea1081091ff054a1a8a720429256aebf8034aab099
+*Cosignatory **'Key 1'** public key: 6083df7119d43e815ed2967c795f806f6b73f8f92a56a7611e3848816ec50958
+*Cosignatory **'Key 2'** public key: 0662ed29cbfa7038530fb7f52df865eed6708d51bc7a24bcd05db35185b53c70
+*Cosignatory **'KRS Key'** public key: cc61676a4275abcffd10a9ea1081091ff054a1a8a720429256aebf8034aab099
 
 We would have to create a JSON object that looks similar to this (test network):
 ```text
@@ -91,13 +104,21 @@ We would have to create a JSON object that looks similar to this (test network):
         "minCosignatories" : {
         "relativeChange": 2
         }
-        }
+}
 ```
 After the transaction is signed and is accepted by the network by including it into a block, the Johns account is now a 2 of 3 multisig account. From this point on, only the cosignatories can initiate a transaction for the Johns account. Also, any transaction from account John must be a multisig transaction. We recommend you create a new testnet account and use [ the test net faucet]( http://test-nem-faucet.44uk.net/) to get some xem to test this KRS.
 
 *Credits*
+
 Author: Aenima
+
 Icons made by DinosoftLabs & Freepik from www.flaticon.com, Creative Commons BY 3.0
+
+
+
+
+
+
 
 
 
