@@ -4,10 +4,7 @@ $(document).ready(function () {
 
 	// Load nem-browser library
 	var nem = require("nem-sdk").default;
-	var nem1= require("nem-sdk").default;
-	var nem2 = require("nem-sdk").default;
-	var nem3 = require("nem-sdk").default;
-
+	
     // Create an NIS endpoint object
 	var endpoint = nem.model.objects.create("endpoint")(nem.model.nodes.defaultTestnet, nem.model.nodes.defaultPort);
 
@@ -38,21 +35,16 @@ $(document).ready(function () {
 	var privateKey3 = '';
 	var keyPair3 = '';
 	
-
 	var pub1 ='';
-	
 	var pub2='';
-	
 	var pub3='';
 	
 
-	
 
 	/**
      * Build transaction from form data and send
      */
 	function send(key4conv,pub1,pub2,pub3) {
-
 
 
 		// Set the private key in common object
@@ -63,10 +55,7 @@ $(document).ready(function () {
 		var publicKey = keyPair.publicKey.toString();
 		var address = nem.model.address.toAddress(publicKey, nem.model.network.data.testnet.id);
 
-		
-
-
-
+	
 		var tx = publicKey;
 		var signatoryArray = [];
 		var address1 = nem.model.address.toAddress(pub1, nem.model.network.data.testnet.id)
@@ -86,8 +75,7 @@ $(document).ready(function () {
             });
 		
 		var transactionEntity = constructAggregate(tx, signatoryArray);
-		console.log('NEW entity');
-		console.log(JSON.stringify(transactionEntity));
+
 
 		// Serialize transfer transaction and announce
 		nem.model.transactions.send(common, transactionEntity, endpoint).then(function(res){
@@ -119,8 +107,8 @@ $(document).ready(function () {
 		var privateKey = $('#privatekeyMultisig').val();
 
 		// Check private key for errors
-		//if (privateKey.length !== 64 && privateKey.length !== 66) return alert('Invalid private key, length must be 64 or 66 characters !');
-		//if (!nem.utils.helpers.isHexadecimal(privateKey)) return alert('Private key must be hexadecimal only !');
+		if (privateKey.length !== 64 && privateKey.length !== 66) return alert('Invalid private key, length must be 64 or 66 characters !');
+		if (!nem.utils.helpers.isHexadecimal(privateKey)) return alert('Private key must be hexadecimal only !');
 
 		$("#section2").hide();
 		$("#section3").fadeIn();
@@ -140,26 +128,26 @@ $(document).ready(function () {
 
 
 		// Create key 1
-		rBytes1 = nem1.crypto.nacl.randomBytes(32);
-		privateKey1 = nem1.utils.convert.ua2hex(rBytes1);
-		keyPair1 = nem1.crypto.keyPair.create(privateKey1);
+		rBytes1 = nem.crypto.nacl.randomBytes(32);
+		privateKey1 = nem.utils.convert.ua2hex(rBytes1);
+		keyPair1 = nem.crypto.keyPair.create(privateKey1);
 		//pub1 = keyPair1.publicKey.toString();
 		pub1 = ua2hexConv(keyPair1.publicKey.data);
 
 
 
 		// Create key 2
-		rBytes2 = nem2.crypto.nacl.randomBytes(32);
-		privateKey2 = nem2.utils.convert.ua2hex(rBytes2);
-		keyPair2 = nem2.crypto.keyPair.create(privateKey2);
+		rBytes2 = nem.crypto.nacl.randomBytes(32);
+		privateKey2 = nem.utils.convert.ua2hex(rBytes2);
+		keyPair2 = nem.crypto.keyPair.create(privateKey2);
 		//pub2 = keyPair2.publicKey.toString();
 		pub2 = ua2hexConv(keyPair2.publicKey.data);
 
 
 		// Create key 3 (recovery key)
 		var passphrase = $('#rndseed').text()+$('#answer1').val().toLowerCase()+$('#answer2').val().toLowerCase()+$('#answer3').val().toLowerCase()+$('#answer4').val().toLowerCase();
-		privateKey3 = nem3.crypto.helpers.derivePassSha(passphrase, 6000).priv; 
-		keyPair3 = nem3.crypto.keyPair.create(privateKey3);
+		privateKey3 = nem.crypto.helpers.derivePassSha(passphrase, 6000).priv; 
+		keyPair3 = nem.crypto.keyPair.create(privateKey3);
 		//pub3 = keyPair3.publicKey.toString();
 		pub3 = ua2hexConv(keyPair3.publicKey.data);
 
