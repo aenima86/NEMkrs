@@ -40,11 +40,11 @@ $(document).ready(function () {
 	
 
 	var pub1 ='';
-	//var pub1 ='bfdeadb7745e35044c0abf64d87165f0f528b12fa28e15e1efd92373d147399a';
+	
 	var pub2='';
-	//var pub2='3aa1c0ddbbae8cdf8968b23049b4dd95ac47f33f1489224cb11a08260ebfaac6';
+	
 	var pub3='';
-	//var pub3='92956540274d22929ded62ede21e7f3bf26a235800fd4a8ca0123ff02d43d3e0';
+	
 
 	
 
@@ -53,10 +53,7 @@ $(document).ready(function () {
      */
 	function send(key4conv,pub1,pub2,pub3) {
 
-		/*
-		var rBytes = nem1.crypto.nacl.randomBytes(32);
-		var privateKeyy = nem1.utils.convert.ua2hex(rBytes1);
-		key4conv = privateKeyy;*/
+
 
 		// Set the private key in common object
 		common.privateKey = key4conv; 
@@ -64,45 +61,9 @@ $(document).ready(function () {
 
 		var keyPair = nem.crypto.keyPair.create(common.privateKey);
 		var publicKey = keyPair.publicKey.toString();
-		var address = nem.model.address.toAddress(publicKey, nem.model.network.data.testnet.id)
+		var address = nem.model.address.toAddress(publicKey, nem.model.network.data.testnet.id);
 
-		console.log(publicKey);
-		console.log(address);
-
-		/*
-		// Set the cleaned amount into transfer transaction object
-		transferTransaction.amount = nem.utils.helpers.cleanTextAmount(0);
-
-		// Recipient address must be clean (no hypens: "-")
-		transferTransaction.recipient = nem.model.address.clean(address);
-
-		// Set message
-		transferTransaction.message ='';
-
-		// Prepare the updated transfer transaction object
-		var transactionEntity = nem.model.transactions.prepare("transferTransaction")(common, transferTransaction, nem.model.network.data.testnet.id);
-		console.log(JSON.stringify(transactionEntity));
-
-		strtest = '{ "timeStamp": 9111526, "fee": 500000, "type": 4097, "deadline": 9154726, "version": -1744830462, "signer": "'+publicKey+'", "modifications": [ { "modificationType": 1, "cosignatoryAccount": "'+pub1+'" },{ "modificationType": 1, "cosignatoryAccount": "'+pub2+'" },{ "modificationType": 1, "cosignatoryAccount": "'+pub3+'" } ], "minCosignatories" : { "relativeChange": 2 } }';
-		var obj1 = JSON.parse(strtest);
-		obj1.timeStamp = transactionEntity.timeStamp
-		obj1.deadline = transactionEntity.deadline
-
-	
-
-		// Serialize transfer transaction and announce
-		nem.model.transactions.send(common, obj1, endpoint).then(function(res){
-			// If code >= 2, it's an error
-			if (res.code >= 2) {
-				alert(res.message);
-			} else {
-				alert(res.message);
-				$("#section3").hide();
-				$("#section4").fadeIn();
-			}
-		}, function(err) {
-			alert(err);
-		}); */
+		
 
 
 
@@ -318,10 +279,6 @@ $(document).ready(function () {
     }
 
 
-
-	
-
-	console.log(nem.model.network.data.testnet.id === nem.model.network.data.testnet.id ? 60 : 24 * 60);
 
 
 });
