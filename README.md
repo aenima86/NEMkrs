@@ -20,7 +20,7 @@ A major problem wallet users encounter is the security of the keys. While most n
 The multi signature KRS tries to deal with creating 2-3 multisig accounts and the problem of recovering lost keys. The idea is in basic pretty simple, the user provides a private key with enough funds for a multisig conversion fee. Then the KRS create the 2-3 multi signature account where 1 key can be store by the user, 1 key can be store by the service and 1 key by the KRS. This is not entirely true, because the KRS doesn’t store any keys but the user is provided with a unique link which can be activated along with the personal identifiable information for recovering the last key. The KRS is open source which means that anyone could run the service and the user could in principal use any of these providers to recover his keys. 
 ![KRS demo]( http://i.imgur.com/6tT20Jb.png)
 
-Check out the demo at: [DEMO]( http://rawgit.com/aenima86/NEMkrs/master/multisig.htm) (tested in Chrome 59.0.3071.115, pulling code from github)
+Check out the demo at: [DEMO]( http://rawgit.com/aenima86/NEMkrs/master/index.htm) (tested in Chrome 59.0.3071.115, pulling code from github)
 or 
 the github: [https://github.com/aenima86/NEMkrs]( https://github.com/aenima86/NEMkrs) 
 
