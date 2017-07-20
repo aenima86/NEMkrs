@@ -76,9 +76,9 @@ Assuming we want to convert Johns account with public key:
 
 
 Into a 2 of 3 multisig account meaning the account has 3 cosignatories and at least 2 cosignatories have to sign to complete a multisig transaction
-*Cosignatory **'Key 1'** public key: 6083df7119d43e815ed2967c795f806f6b73f8f92a56a7611e3848816ec50958
-*Cosignatory **'Key 2'** public key: 0662ed29cbfa7038530fb7f52df865eed6708d51bc7a24bcd05db35185b53c70
-*Cosignatory **'KRS Key'** public key: cc61676a4275abcffd10a9ea1081091ff054a1a8a720429256aebf8034aab099
+* Cosignatory **'Key 1'** public key: 6083df7119d43e815ed2967c795f806f6b73f8f92a56a7611e3848816ec50958
+* Cosignatory **'Key 2'** public key: 0662ed29cbfa7038530fb7f52df865eed6708d51bc7a24bcd05db35185b53c70
+* Cosignatory **'KRS Key'** public key: cc61676a4275abcffd10a9ea1081091ff054a1a8a720429256aebf8034aab099
 
 We would have to create a JSON object that looks similar to this (test network):
 ```text
