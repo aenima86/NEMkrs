@@ -21,7 +21,9 @@ The multi signature KRS tries to deal with creating 2-3 multisig accounts and th
 ![KRS demo]( http://i.imgur.com/6tT20Jb.png)
 
 Check out the demo at: [DEMO]( http://rawgit.com/aenima86/NEMkrs/master/index.htm) (tested in Chrome 59.0.3071.115, pulling code from github)
+
 or 
+
 the github: [https://github.com/aenima86/NEMkrs]( https://github.com/aenima86/NEMkrs) 
 
 ## Constructing recovery key
