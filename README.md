@@ -1,5 +1,5 @@
 ## Key Recovery Service (KRS)
-The recovery of keys is a big challenge in all cryptocurrencies. One of the main concerns for many people using cryptocurrencies is security of their funds. This is not an easy task for most people, because we are used to centralized organizations taking care of security and supporting us when we have forgotten our password. In crypto-land our funds are forever lost if we loses our keys or in some cases, a third party services have scammed people, stealing all their crypto coins. This is why a Key Recovery Service (KRS) is highly relevant for adoption of a cryptocurrency such as NEM.
+The recovery of keys is a big challenge in all cryptocurrencies. One of the main concerns for many people using cryptocurrencies is security of their funds. This is not an easy task for most people, because we are used to centralized organizations taking care of security and supporting us when we have forgotten our password. In crypto-land our funds are forever lost if we loses our keys or in some cases, a third party services have scammed people stealing all their crypto coins. This is why a Key Recovery Service (KRS) is highly relevant for adoption of a cryptocurrency such as NEM.
 
 The KRS is built around two use cases:
 * Single key KRS: a user loses his private key and needs to recover the key. 
@@ -97,6 +97,7 @@ We would have to create a JSON object that looks similar to this (test network):
 After the transaction is signed and is accepted by the network by including it into a block, the Johns account is now a 2 of 3 multisig account. From this point on, only the cosignatories can initiate a transaction for the Johns account. Also, any transaction from account John must be a multisig transaction. We recommend you create a new testnet account and use [ the test net faucet]( http://test-nem-faucet.44uk.net/) to get some xem to test this KRS.
 
 *Credits*
+
 Author: Aenima
 
 Icons made by DinosoftLabs & Freepik from www.flaticon.com, Creative Commons BY 3.0
