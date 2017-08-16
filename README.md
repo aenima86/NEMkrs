@@ -48,7 +48,7 @@ To calculate the recovery private key, the random seed is combined with the pers
 By activating the webhook the user can reconstruct the answers and the KRS can in combination with the random seed recover the private key. This method is smart because the user does not have to trust a KRS service for storing his private keys.
 
 ## Converting to multisignature account
-For the multisig 2-3 KRS we need the user to provide a private key for the account to be converted. The account needs to hold enough funds to pay the fee for converting to a multi signature account (1 xem on the testnet). Before we convert the account, we need to create 3 new private keys, the first two keys are created by pure randomness:
+For the multisig 2-3 KRS we need the user to provide a private key for the account to be converted. The account needs to hold enough funds to pay the fee for converting to a multi signature account and activating the new keys (total of ~5 xem on the testnet). Before we convert the account, we need to create 3 new private keys, the first two keys are created by pure randomness:
 
 
 ```javascript
@@ -58,7 +58,8 @@ var privateKey1 = nem.utils.convert.ua2hex(rBytes1);
 var keyPair1 = nem.crypto.keyPair.create(privateKey1);
 var publicKey1 = keyPair1.publicKey.toString();
 ```
-The last key is created in the same manner described for the single key KRS. This key is hidden from the user, but can be recovered using the web hook with the random seed and the questions. Now we have the private keys and corresponding public keys for the three keypair (+ the private key provided by the user) needed to convert the multi signature account. We do this by broadcasting a multisig transaction to the network.
+The last key is created in the same manner described for the single key KRS. This key is hidden from the user, but can be recovered using the web hook with the random seed and the questions. The three new keys are activated by sending 1 xem + fee from the multisignature account to each of the new keys and back again. 
+Now we have the private keys and corresponding public keys for the three keypair (+ the private key provided by the user) needed to convert the multi signature account. We do this by broadcasting a multisig transaction to the network.
 
 Assuming we want to convert Johns account with public key:
 

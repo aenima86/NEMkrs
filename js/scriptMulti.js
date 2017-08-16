@@ -38,6 +38,8 @@ $(document).ready(function () {
 	var pub1 ='';
 	var pub2='';
 	var pub3='';
+
+	var addressActivationCount=0;
 	
 
 
@@ -110,6 +112,19 @@ $(document).ready(function () {
 		if (privateKey.length !== 64 && privateKey.length !== 66) return alert('Invalid private key, length must be 64 or 66 characters !');
 		if (!nem.utils.helpers.isHexadecimal(privateKey)) return alert('Private key must be hexadecimal only !');
 
+		checkSufficientFunds(endpoint,privateKey,nem);
+
+	});
+
+	function Sec2ChecksClr() { //called if checkSufficientFunds OK
+
+		var privateKeyMulti = $('#privatekeyMultisig').val();
+		keyPairMulti = nem.crypto.keyPair.create(privateKeyMulti);
+		pubMulti = ua2hexConv(keyPairMulti.publicKey.data);
+		var addressMulti = nem.model.address.toAddress(pubMulti, nem.model.network.data.testnet.id);
+		//console.log("privateKeyMulti:"+ privateKeyMulti);
+		//console.log("addressMulti:"+ addressMulti);
+
 		$("#section2").hide();
 		$("#section3").fadeIn();
 
@@ -131,25 +146,33 @@ $(document).ready(function () {
 		rBytes1 = nem.crypto.nacl.randomBytes(32);
 		privateKey1 = nem.utils.convert.ua2hex(rBytes1);
 		keyPair1 = nem.crypto.keyPair.create(privateKey1);
-		//pub1 = keyPair1.publicKey.toString();
 		pub1 = ua2hexConv(keyPair1.publicKey.data);
-
+		var address1 = nem.model.address.toAddress(pub1, nem.model.network.data.testnet.id);
+		//console.log("pub1:"+ pub1);
+		//console.log("add1:"+ address1);
+		addressActivation(address1,privateKey1,addressMulti,privateKeyMulti,nem,endpoint);
 
 
 		// Create key 2
 		rBytes2 = nem.crypto.nacl.randomBytes(32);
 		privateKey2 = nem.utils.convert.ua2hex(rBytes2);
 		keyPair2 = nem.crypto.keyPair.create(privateKey2);
-		//pub2 = keyPair2.publicKey.toString();
 		pub2 = ua2hexConv(keyPair2.publicKey.data);
+		var address2 = nem.model.address.toAddress(pub2, nem.model.network.data.testnet.id);
+		//console.log("pub2:"+ pub2);
+		//console.log("add2:"+ address2);
+		addressActivation(address2,privateKey2,addressMulti,privateKeyMulti,nem,endpoint);
 
 
 		// Create key 3 (recovery key)
 		var passphrase = $('#rndseed').text()+$('#answer1').val().toLowerCase()+$('#answer2').val().toLowerCase()+$('#answer3').val().toLowerCase()+$('#answer4').val().toLowerCase();
 		privateKey3 = nem.crypto.helpers.derivePassSha(passphrase, 6000).priv; 
 		keyPair3 = nem.crypto.keyPair.create(privateKey3);
-		//pub3 = keyPair3.publicKey.toString();
 		pub3 = ua2hexConv(keyPair3.publicKey.data);
+		var address3 = nem.model.address.toAddress(pub3, nem.model.network.data.testnet.id);
+		//console.log("pub3:"+ pub3);
+		//console.log("add3:"+ address3);
+		addressActivation(address3,privateKey3,addressMulti,privateKeyMulti,nem,endpoint);
 
 		$('#pk1').text(privateKey1);
 		$('#pk2').text(privateKey2);
@@ -160,7 +183,7 @@ $(document).ready(function () {
 		$('#wh').text(encodeURI(uri.replace("multisig.htm", "index.htm"))); 
 
 		$(window).scrollTop(0);
-	});
+	};
 
 	$("#backbtnSec3").click(function() {
 		$("#section3").hide();
@@ -172,12 +195,18 @@ $(document).ready(function () {
 	// Call send function when click on send button
 	$("#nextbtnSec3").click(function() {
 	
+		if (addressActivationCount==3){ //convert to multisig hvis all accunts are activated
 
-		var PKmultisig = $('#privatekeyMultisig').val();
+			var PKmultisig = $('#privatekeyMultisig').val();
+			send(PKmultisig,pub1,pub2,pub3);
 
-		send(PKmultisig,pub1,pub2,pub3);
+		}else{alert("Activation not successful")};
+
+	
+		
 	});
 
+   //Support function
    function ua2hexConv(ua) {
 		var s = '';
 		var _hexEncodeArrayy = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'a', 'b', 'c', 'd', 'e', 'f'];
@@ -188,7 +217,7 @@ $(document).ready(function () {
 		}
 		return s;
 	};
-
+	//Support function
 	function uaConv(ua) {
 		var s = '';
 		var _hexEncodeArrayy = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'a', 'b', 'c', 'd', 'e', 'f'];
@@ -199,7 +228,7 @@ $(document).ready(function () {
 		}
 		return s;
 	};
-
+	//Support function
 	function constructAggregate(tx, signatoryArray) {
         var timeStamp = createNEMTimeStamp();
         var version = -1744830462;
@@ -232,15 +261,10 @@ $(document).ready(function () {
         var entity = $.extend(data, custom);
         return entity;
     };
-
+	//Support function
 	// NEM epoch time
 	var NEM_EPOCH = Date.UTC(2015, 2, 29, 0, 6, 25, 0);
 
-	/**
-	* createNEMTimeStamp() Create a time stamp for a NEM transaction
-	*
-	* @return NEM transaction timestamp
-	*/
 	function createNEMTimeStamp() {
 		return Math.floor((Date.now() / 1000) - (NEM_EPOCH / 1000));
 	}
@@ -264,9 +288,93 @@ $(document).ready(function () {
             'timeStamp': timeStamp,
             'deadline': timeStamp + due * 60
         };
-    }
+	}
+
+	//////////////////////////////////////////////////////////////////////////////////////////////////////
+	function checkSufficientFunds(endpoint,privateKey,nem) {
+
+		var keyPairCSF = nem.crypto.keyPair.create(privateKey);
+		var pubCSF = keyPairCSF.publicKey.toString();
+		var addressCSF = nem.model.address.toAddress(pubCSF, nem.model.network.data.testnet.id)
+		
+
+	
+		nem.com.requests.account.data(endpoint, addressCSF).then(function(res){
+			
+			var minimumBalance = 5; //xem
+			if ((res.account.balance/1000000)<minimumBalance){
+				alert('No enough account funds!');
+				throw new Error('No enough account funds!');
+			}else { //we have suff funds
+
+				console.log("checkSufficientFunds: funds OK")
+				Sec2ChecksClr(); // call next step
+
+			}
+				
+			
+		});
+
+        
+	}
+	//////////////////////////////////////////////////////////////////////////////////////////////////////
+	//activate account by sending 1 xem+fee and back again
+	function addressActivation(add4Acti,PK4Acti,addressSender,privateKeySender,nem,endpoint) {
+
+		var common = nem.model.objects.get("common");
+		common.privateKey =privateKeySender;
+
+		// Create an object with parameters
+		var transferTransaction = nem.model.objects.create("transferTransaction")(add4Acti, 1.15, "");
+
+		// Prepare the above object
+		var transactionEntity = nem.model.transactions.prepare("transferTransaction")(common, transferTransaction, nem.model.network.data.testnet.id);
+		transactionEntity.fee = 150000; //0.15 xem
+
+		console.log(transactionEntity);
+
+		// Serialize transfer transaction and announce
+		nem.model.transactions.send(common, transactionEntity, endpoint).then(function(res){
+			// If code >= 2, it's an error
+			if (res.code >= 2) {
+				alert(res.message);
+			} else {
+				//alert(res.message);
+				
+
+				var common2 = nem.model.objects.get("common");
+				common2.privateKey =PK4Acti;
+
+				// Create an object with parameters
+				var transferTransaction2 = nem.model.objects.create("transferTransaction")(addressSender, 1, "");
+				// Prepare the above object
+				var transactionEntity2 = nem.model.transactions.prepare("transferTransaction")(common2, transferTransaction2, nem.model.network.data.testnet.id);
+				transactionEntity2.fee = 150000; //0.15 xem
+				// Serialize transfer transaction and announce
+				nem.model.transactions.send(common2, transactionEntity2, endpoint).then(function(res){
+					// If code >= 2, it's an error
+					if (res.code >= 2) {
+						alert(res.message);
+					} else {
+						//alert(res.message);
+						addressActivationCount = addressActivationCount+1;
+						alert("Activating account: success "+addressActivationCount +" of 3");
+						
+					}
+				}, function(err) {
+					alert(err);
+				});
+
+			}
+		}, function(err) {
+			alert(err);
+		});
 
 
+	}
 
 
-});
+	
+	
+
+}); //end

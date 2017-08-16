@@ -27,6 +27,9 @@ var address = nem.model.address.toAddress(publicKey, nem.model.network.data.main
 
 
 
+
+
+
 $("#startBtn").click(function(){
     $("#section1").hide();
 	$("#section2").fadeIn();
