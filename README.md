@@ -6,11 +6,13 @@ The KRS is built around two use cases:
 * Multisig KRS: a user wants to use a third-party service (e.g. a wallet), but want to make sure he can access his funds if the service shuts down, he forgets his password or he loses faith in the service. 
 
 ## Single key KRS
-This KRS idea comprises that the user uses the KRS service to generate a private key. The key is generated based on a random seed + personal identifiable information. Furthermore, a unique webhook is generated – this can be stored without high security (e.g. in email or notes) because the webhook can only be activated to restore the keys in combination with the personal identifiable information (which is only known to the user).
+This KRS idea comprises that the user uses the KRS service to generate a private key or encrypt an existing. The key is generated or encrypted based on a random seed + personal identifiable information. Furthermore, a unique webhook is generated – this can be stored without high security (e.g. in email or notes) because the webhook can only be activated to restore the keys in combination with the personal identifiable information (which is only known to the user).
 
 ![KRS](http://i.imgur.com/JHpkJqJ.png)
 
-The user can choose which personal identifiable information he wishes to identify him, for example could this information be the title of his favorite book in combination with his passport number and his credit card number. Information which is only known to the user creating the keys. The KRS service is all browser based, which is important for security because no information is leaving the users own computer. Subsequently, the users new private key is calculated and can be imported into the user’s wallet. Furthermore, a unique link is created which the user can store in a non-secure manner, and can be activated for a recovery of his key.  
+The user can choose which personal identifiable information he wishes to identify him, for example could this information be the title of his favorite book in combination with his passport number and his credit card number. Information which is only known to the user creating the keys. The KRS service is all browser based, which is important for security because no information is leaving the users own computer. Subsequently, the users new private key is calculated and can be imported into the user’s wallet. Furthermore, a unique link is created which the user can store in a non-secure manner, and can be activated for a recovery of his key. 
+
+![KRS](http://i.imgur.com/UuE8gyP.png) 
 
 ## Multisig KRS
 A major problem wallet users encounter is the security of the keys. While most new secure wallets (in the crypto world) implement multi-signature, in which 1 or 2 keys are created and stored by the user, a problem arises when the user forgets one of the passwords as they would then lose access to the wallet and its contents. The idea with a 2-3 multi signature wallet where the user controls 2/3 key and the service 1/3 is important because the user is in control and his fund cannot be compromised in case the service shut down, get hacked etc. 

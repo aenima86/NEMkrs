@@ -10,6 +10,9 @@ var rBytes = nem.crypto.nacl.randomBytes(32);
 var randomSeed = uaConv(rBytes);
 $('#rndseed').text(randomSeed);
 
+var encryptMode=0;
+var encryptKey='';
+
 //check if we are in recovery mode
 urlCheck();
 
@@ -29,12 +32,25 @@ var address = nem.model.address.toAddress(publicKey, nem.model.network.data.main
 
 $("#startBtn").click(function(){
     $("#section1").hide();
-	$("#section2").fadeIn();
+    $("#section2").fadeIn();
+    
+    
 
 	$(window).scrollTop(0);
 	
 });
 $("#nextbtnSec2").click(function(){
+
+    
+    if (nem.utils.helpers.isPrivateKeyValid( $('#privatekeyProv').val() )!=1 && encryptMode==0) {
+
+        alert('Private key is not valid !');
+        throw new Error('Private key is not valid !');
+
+    };
+
+
+
     $("#section2").hide();
 	$("#section3").fadeIn();
 
@@ -62,16 +78,34 @@ $("#nextbtnSec3").click(function(){
     $("#section3").hide();
 	$("#section4").fadeIn();
 
-	$(window).scrollTop(0);
+    $(window).scrollTop(0);
+    
+    if (encryptMode==0) {
 
-	var passphrase = $('#rndseed').text()+$('#answer1').val().toLowerCase()+$('#answer2').val().toLowerCase()+$('#answer3').val().toLowerCase()+$('#answer4').val().toLowerCase();
-	var pKey = makePrivateKey(passphrase);
-	$('#pk').text(pKey);
+        var passphrase = $('#rndseed').text()+$('#answer1').val().toLowerCase()+$('#answer2').val().toLowerCase()+$('#answer3').val().toLowerCase()+$('#answer4').val().toLowerCase();
+        var pKey = EncryptPrivateKey(passphrase);
+        $('#pk').text(pKey);
+    
+        var pathname = window.location.href;
+        var uri = pathname + '?seeden=' + $('#rndseed').text() + '&encrypt=' + pKey + '&Q1=' + $('#question1').find(":selected").text() + '&Q2=' + $('#question2').find(":selected").text() + '&Q3=' + $('#question3').find(":selected").text()+ '&Q4=Your e-mail address?';
+        $('#wh').text(encodeURI(uri));
 
-	var pathname = window.location.href;
-	var uri = pathname + '?seed=' + $('#rndseed').text() + '&Q1=' + $('#question1').find(":selected").text() + '&Q2=' + $('#question2').find(":selected").text() + '&Q3=' + $('#question3').find(":selected").text()+ '&Q4=Your e-mail address?';
-	$('#wh').text(encodeURI(uri));
+        $('#txtRecov').hide();
+        $('#txtEncryp').show();
 
+    };
+    if (encryptMode==1) {
+
+        var passphrase = $('#rndseed').text()+$('#answer1').val().toLowerCase()+$('#answer2').val().toLowerCase()+$('#answer3').val().toLowerCase()+$('#answer4').val().toLowerCase();
+        var pKey = DecryptPrivateKey(passphrase);
+        $('#pk').text(pKey);
+
+        $('#txtRecov').show();
+        $('#txtEncryp').hide();
+        
+    };
+
+	
 	
 });
 
@@ -88,10 +122,17 @@ function uaConv(ua) {
     return s;
 };
 
-function makePrivateKey(passphrase) {
+function EncryptPrivateKey(passphrase) {
 
-	var privateKey = nem.crypto.helpers.derivePassSha(passphrase, 6000).priv;
-    return privateKey;
+	var encrypted = CryptoJS.AES.encrypt($('#privatekeyProv').val(), passphrase);
+    return encrypted;
+};
+
+function DecryptPrivateKey(passphrase) {
+
+    
+        var decrypted = CryptoJS.AES.decrypt(encryptKey, passphrase);
+        return decrypted.toString(CryptoJS.enc.Utf8);
 };
 
 function urlParam(name) {
@@ -110,11 +151,11 @@ function urlParam(name) {
 
 function urlCheck() {
 
-	if( urlParam('seed') != null) {
+	if( urlParam('seeden') != null) {
 		$("#section1").hide();
 		$("#section2").fadeIn();
 
-		$('#rndseed').text(decodeURI(urlParam('seed')));
+		$('#rndseed').text(decodeURI(urlParam('seeden')));
 
 		var select = document.getElementById('question1');
  		select.options[select.options.length] = new Option(decodeURI(urlParam('Q1')));
@@ -131,10 +172,16 @@ function urlCheck() {
 		select.selectedIndex = select.options.length-1;
 		$('#question3').attr("disabled", "disabled");
 
-
+        encryptMode=1;
+        encryptKey = decodeURI(urlParam('encrypt'));
+        $('#privatekeyProv').hide();
+        $('#privatekeyProvTxt').hide();
+        
 
 
 	}
     
 };
+
+
 

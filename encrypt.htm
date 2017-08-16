@@ -1,11 +1,11 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html>
 
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>NEM krs multisig</title>
+  <title>NEM krs</title>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
   <link rel="stylesheet" id="bulma" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.3.2/css/bulma.min.css" />
   <link rel="stylesheet" type="text/css" href="css/blog-post.css">
@@ -16,13 +16,13 @@
 
     <nav class="nav section" id="top">
       <div class="nav-left">
-        <a class="nav-item" href="multisig.htm">
+        <a class="nav-item" href="index.htm">
           <img src="img/krs-logo.png" alt="Bulma logo">
         </a>
       </div>
 
       <div class="nav-center">
-        <a class="nav-item"  href="https://github.com/aenima86/NEMkrs">
+        <a class="nav-item" href="https://github.com/aenima86/NEMkrs">
           <span class="icon">
             <i class="fa fa-github"></i>
           </span>
@@ -50,7 +50,6 @@
         <a class="nav-item" href='multisig.htm'>
           Multisig
         </a>
-        
 
         <span class="nav-item">
           
@@ -71,7 +70,7 @@
             NEM
           </h1>
           <h2 class="subtitle is-4">
-           Multisig Key Recovery Service
+            Encrypt Key Recovery Service
           </h2>
         </div>
       </div>
@@ -84,15 +83,11 @@
         <div class="columns is-mobile">
           <div class="column is-8 is-offset-2">
             <div class="content blog-post section">
-              
-
-              
-
 
               <div class="card is-fullwidth">
                 <header class="card-header">
                   <p class="card-header-title">
-                    Multisig KRS - testnet
+                    Encrypt key
                   </p>
                   <a class="card-header-icon" href="#top">
                   <i class="fa fa-angle-up"></i>
@@ -103,33 +98,38 @@
                     <div class="media-content">
                       <div class="content">
                         <p>
-                          The multisig KRS will convert an account to an 2-3 multisignature account. Two (of three) new key will be generated, the 3. key can be recovered using the same method as the single key KRS.
+                          The <strong>Encrypt Key Recovery Service (KRS)</strong> is a method of encrypting a private key for the NEM
+                          blockchain which can be recovered if you lose your key. The method utilizes a combination of a
+                          random seed + personally identifiable information.
                         </p>
                       </div>
                     </div>
                   </article>
                 </div>
                 <footer class="card-footer">
-                  <a class="card-footer-item" id="startBtn">Create multisig keys</a>
+                  <a class="card-footer-item" id="startBtn">Encrypt key</a>
                 </footer>
               </div>
               <br><br>
-              <img src="http://i.imgur.com/Z0ye6gF.png" alt="Bulma logo">
+              <img src="http://i.imgur.com/UuE8gyP.png" alt="Bulma logo">
               <br><br>
               <p>
-                A major problem wallet users encounter is the security of the keys. While most new secure wallets (in the crypto world) implement
-                multi-signature, in which 1 or 2 keys are created and stored by the user, a problem arises when the user
-                forgets one of the passwords as they would then lose access to the wallet and its contents. The idea with
-                a 2-3 multi signature wallet where the user controls 2/3 key and the service 1/3 is important because the
-                user is in control and his fund cannot be compromised in case the service shut down, get hacked etc. The
-                multi signature KRS tries to deal with creating 2-3 multisig accounts and the problem of recovering lost
-                keys. The idea is in basic pretty simple, the user provide a private key with enough funds for a multisig
-                conversion fee. Then the KRS create the 2-3 multi signature account where 1 key can be store by the user,
-                1 key can be store by the service and 1 key by the KRS. This is not entirely true, because the KRS doesn’t
-                store any keys but the user are provided with a unique link which can be activated along with the personal
-                identifiable information for recovering the last key. The KRS is open source which means that anyone could
-                run the service and the user in principal could use any of these providers to recover his keys.
-
+                The recovery of keys is a big challenge in all cryptocurrencies. One of the main concerns for many people using cryptocurrencies
+                is security of their funds. This is not an easy task for most people, because we are used to centralized
+                organizations taking care of security and supporting us when we have forgotten our password. In crypto-land
+                our funds are forever lost if we loses our keys or in some cases third party services have scammed people,
+                stealing all their crypto coins. This is why a Key Recovery Service (KRS) is highly relevant for adoption
+                of a cryptocurrency such as NEM. This KRS idea comprises that the user uses the KRS service to generate or encrypt a
+                private key. The key is generated based on a random seed + personal identifiable information. Furthermore,
+                a unique webhook is generated – this can be stored without high security (e.g. in email or notes) because
+                the webhook can only be activated to restore the keys in combination with the personal identifiable information
+                (which is only known to the user). The user can choose which personal identifiable information he wishes
+                to identify him, for example could this information be the title of his favorite book in combination with
+                his passport number and his credit card number. Information which is only known to the user creating the
+                keys. The KRS service is all browser based which is important for security because no information is leaving
+                the users own computer. Subsequently, the users new private key is calculated and can be imported into the
+                users wallet. Furthermore, a unique link is created which the user can store in a non-secure manner, and
+                can be activated for a recovery of his key.
               </p>
 
             </div>
@@ -146,13 +146,13 @@
           <div class="column is-8 is-offset-2">
             <div class="content blog-post section">
 
-              <p>
-                  <span class="tag is-primary is-warning is-medium" >Beta - only for testnet.</span> Please provide a valid private key for convertion to multisig - the account need to have sufficient funds (1 xem) on the testnet to pay for the conversion.
+              <p id="privatekeyProvTxt">
+                  <span class="tag is-primary is-warning is-medium" >Private key</span> Please provide a valid private key for encryption.
               </p>
-
+          
               <p class="control">
-                <input class="input" type="password" id="privatekeyMultisig" placeholder="private key (testnet)">
-              </p>
+                <input class="input" type="password" id="privatekeyProv" placeholder="private key">
+              </p>                
 
               <p>
                 Select questions that in combination with the random seed should form a key recovery option for you. This tool do not store any of your personal information. The information given here is only used to calculate a recovery key and the process is done in your browser on your computer (e.g. you can run this process offline if you like).
@@ -361,10 +361,6 @@
               </p>
 
               <p>
-                <span class="tag is-warning is-medium" >Private key for conversion</span> <span class="tag is-light is-medium" id="PK4C"></span>
-              </p>
-
-              <p>
                 <span class="tag is-primary is-medium" id="q1">Your national identification number?</span> <span class="tag is-light is-medium" id="a1">364563-9877</span>
               </p>
               <p>
@@ -382,7 +378,7 @@
                   <span class="icon is-small">
                     <i class="fa fa-check"></i>
                   </span>
-                  <span>Create</span>
+                  <span>Done</span>
               </a>
               <a class="button is-danger is-outlined" id="backbtnSec3">
                 <span>Change</span>
@@ -406,34 +402,24 @@
             <div class="content blog-post section">
 
 
-              <p>
-                The private keys (three) are now calculated and the account is converted to a 2-3 multisignature account. Your can give one key to a third party (a service), if  you wants to stop using the service, you can use the krs to get the third key and regain control. 
+              <p id="txtRecov">
+                The private key is now calculated. Your can import it into your NEM wallet. 
+                <br>
+                <br>
+                <span class="tag is-primary is-medium" >Private key</span> <span class="tag is-light is-medium" id="pk"></span>
               </p>
+              <p id="txtEncryp">
+                    The private key is now encrypted. The recovery hook (webadress) can be used to recover your private key, you can save it in a non-secure environment, e.g. send it to your own e-mail or bookmark it. 
+                    <br>
+                    <br>
+                    <span class="tag is-primary is-medium" >Webhook</span> 
+                    <div class="field">
+                      <p class="control">
+                        <textarea class="textarea is-hovered" placeholder="" id="wh"></textarea>
+                      </p>
+                    </div>
+            </p>
 
-              <p>
-                <span class="tag is-primary is-medium" >Private key 1</span> <span class="tag is-light is-medium" id="pk1"></span>
-              </p>
-
-              <p>
-                <span class="tag is-primary is-medium" >Private key 2</span> <span class="tag is-light is-medium" id="pk2"></span>
-              </p>
-
-              <p>
-                <span class="tag is-primary is-medium" >Private key 3</span> <span class="tag is-light is-medium" id="pk3"> - Hidden -</span>
-              </p>
-
-              <p>
-                You can at recover the 3. private key at anytime using the designated unique webhook. Remember to bookmark it or save it using another method. 
-              </p>
-
-              <p >
-                <span class="tag is-primary is-medium" >Webhook:</span> 
-                <div class="field">
-                  <p class="control">
-                    <textarea class="textarea is-hovered" placeholder="Hovered textarea" id="wh"></textarea>
-                  </p>
-                </div>
-              </p>
               
 
             </div>
@@ -465,7 +451,9 @@
   </footer>
 </body>
 </script>
-<script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.2/rollups/aes.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="js/nem-sdk.js"></script>
-<script src="js/scriptMulti.js"></script>
+<script src="js/scriptEncrypt.js"></script>
+
 </html>
