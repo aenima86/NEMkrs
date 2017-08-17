@@ -14,7 +14,7 @@ This KRS idea comprises that the user uses the KRS service to generate a private
 The user can choose which personal identifiable information he wishes to identify him, for example could this information be the title of his favorite book in combination with his passport number and his credit card number. Information which is only known to the user creating the keys. The KRS service is all browser based, which is important for security because no information is leaving the users own computer. Subsequently, the users new private key is calculated and can be imported into the user’s wallet. Furthermore, a unique link is created which the user can store in a non-secure manner, and can be activated for a recovery of his key. 
 
 ## Encrypt existing KRS
-Existing private key can also be linked to the key recovery service. The private key is encrypted using strong encryption methods and a random seed in combination with personal identifiable information. Like the *create new* a unique webhook is generated and this can be saved and late used for restoring the original key using the personal information. 
+Existing private key can also be linked to the key recovery service. The private key is encrypted using strong encryption methods and a random seed in combination with personal identifiable information. Like the *create new* a unique webhook is generated and this can be saved and later used for restoring the original key using the personal information. 
 
 ![KRS](http://i.imgur.com/UuE8gyP.png) 
 
