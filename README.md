@@ -3,7 +3,7 @@ The recovery of keys is a big challenge in all cryptocurrencies. One of the main
 
 The KRS is built around three use cases:
 * Create new KRS: creation of new private keys, which can be recovered if lost.
-* Encrypt Existing KRS: recovery service for existing private keys.
+* Encrypt existing KRS: recovery service for existing private keys.
 * Multisig KRS: a user wants to use a third-party service (e.g. a wallet), but want to make sure he can access his funds if the service shuts down, he forgets his password or he loses faith in the service. 
 
 ## Create new KRS
