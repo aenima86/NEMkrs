@@ -1,16 +1,20 @@
 ## Key Recovery Service (KRS)
 The recovery of keys is a big challenge in all cryptocurrencies. One of the main concerns for many people using cryptocurrencies is security of their funds. This is not an easy task for most people, because we are used to centralized organizations taking care of security and supporting us when we have forgotten our password. In crypto-land our funds are forever lost if we loses our keys or in some cases, a third party services have scammed people stealing all their crypto coins. This is why a Key Recovery Service (KRS) is highly relevant for adoption of a cryptocurrency such as NEM.
 
-The KRS is built around two use cases:
-* Single key KRS: a user loses his private key and needs to recover the key. 
+The KRS is built around three use cases:
+* Create new KRS: creation of new private keys, which can be recovered if lost.
+* Encrypt Existing KRS: recovery service for existing private keys.
 * Multisig KRS: a user wants to use a third-party service (e.g. a wallet), but want to make sure he can access his funds if the service shuts down, he forgets his password or he loses faith in the service. 
 
-## Single key KRS
-This KRS idea comprises that the user uses the KRS service to generate a private key or encrypt an existing. The key is generated or encrypted based on a random seed + personal identifiable information. Furthermore, a unique webhook is generated – this can be stored without high security (e.g. in email or notes) because the webhook can only be activated to restore the keys in combination with the personal identifiable information (which is only known to the user).
+## Create new KRS
+This KRS idea comprises that the user uses the KRS service to generate a private key. The key is generated based on a random seed + personal identifiable information. Furthermore, a unique webhook is generated – this can be stored without high security (e.g. in email or notes) because the webhook can only be activated to restore the keys in combination with the personal identifiable information (which is only known to the user).
 
 ![KRS](http://i.imgur.com/JHpkJqJ.png)
 
 The user can choose which personal identifiable information he wishes to identify him, for example could this information be the title of his favorite book in combination with his passport number and his credit card number. Information which is only known to the user creating the keys. The KRS service is all browser based, which is important for security because no information is leaving the users own computer. Subsequently, the users new private key is calculated and can be imported into the user’s wallet. Furthermore, a unique link is created which the user can store in a non-secure manner, and can be activated for a recovery of his key. 
+
+## Encrypt existing KRS
+Existing private key can also be linked to the key recovery service. The private key is encrypted using strong encryption methods and a random seed in combination with personal identifiable information. Like the *create new* a unique webhook is generated and this can be saved and late used for restoring the original key using the personal information. 
 
 ![KRS](http://i.imgur.com/UuE8gyP.png) 
 
